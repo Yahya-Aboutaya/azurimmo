@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class BatimentService {
@@ -32,5 +33,12 @@ public class BatimentService {
     public Optional<BatimentDTO> getBatimentDTO(Long id) {
     	  return batimentRepository.findById(id)
                   .map(BatimentMapper::toDTO);
+    }
+    
+    public List<BatimentDTO> getBatimentsDTO() {
+        return batimentRepository.findAll()
+                                 .stream()
+                                 .map(BatimentMapper::toDTO)
+                                 .collect(Collectors.toList());
     }
 }

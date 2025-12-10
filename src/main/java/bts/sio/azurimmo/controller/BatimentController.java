@@ -5,8 +5,6 @@ import bts.sio.azurimmo.model.dto.BatimentDTO;
 import bts.sio.azurimmo.service.BatimentService;
 
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -45,5 +43,10 @@ public class BatimentController {
             return batimentService.getBatimentDTO(batimentId)
                                   .map(ResponseEntity::ok)   // batiment trouvé → 200
                                   .orElse(ResponseEntity.notFound().build()); // pas trouvé → 404
+    }
+    
+    @GetMapping("/")
+    public List<BatimentDTO> getAllBatiments() {
+        return batimentService.getBatimentsDTO(); 
     }
 }
