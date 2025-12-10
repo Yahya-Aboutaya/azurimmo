@@ -28,6 +28,7 @@ public class AppartementService {
 	 public List<Appartement> getAppartementsParBatiment(long id) {
 	        return appartementRepository.findByBatiment_Id(id);
 	 }
+	 
 	 public List<Appartement> getAppartementsBySurfaceGreatherThan(double surface) {
 	        return appartementRepository.findBySurfaceGreaterThan(surface);
 	 }
