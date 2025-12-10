@@ -16,6 +16,7 @@ import lombok.Data;
 @Table(name="appartement")
 public class Appartement {
 	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id; 
@@ -36,5 +37,8 @@ public class Appartement {
 	@ManyToOne
 	@JoinColumn(name = "batiment_id")
 	private Batiment batiment;
-
+	
+	public void setBatiment(Batiment batiment) {
+	        this.batiment = batiment;
+	}
 }

@@ -1,5 +1,6 @@
 package bts.sio.azurimmo.service;
 
+import bts.sio.azurimmo.model.Appartement;
 import bts.sio.azurimmo.model.Batiment;
 import bts.sio.azurimmo.model.dto.BatimentDTO;
 import bts.sio.azurimmo.model.mapper.BatimentMapper;
@@ -46,6 +47,7 @@ public class BatimentService {
         Batiment entity = BatimentMapper.toEntity(dto);
         Batiment saved = batimentRepository.save(entity);
         return BatimentMapper.toDTO(saved);
-    }
+    }  
     
+
 }
