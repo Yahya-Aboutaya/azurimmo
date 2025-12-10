@@ -2,7 +2,10 @@ package bts.sio.azurimmo.controller;
 
 import bts.sio.azurimmo.model.Appartement;
 import bts.sio.azurimmo.model.dto.AppartementDTO;
+import bts.sio.azurimmo.model.dto.BatimentDTO;
 import bts.sio.azurimmo.service.AppartementService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 import java.util.List;
 
@@ -12,12 +15,18 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/api/appartements")
+@RequestMapping("/appartements")
+@Tag(name = "Appartements", description = "Gestion des appartements")
 public class AppartementController {
 	
    @Autowired
     private AppartementService appartementService;
-
+   
+   @GetMapping("/")
+   @Operation(summary = "Récupère tous les appartements")
+   public List<AppartementDTO> getAllAppartements() {
+       return appartementService.getAppartementsDTO(); 
+   }
 
    @PostMapping("/")
    public ResponseEntity<AppartementDTO> createAppartement(@RequestBody AppartementDTO dto) {
