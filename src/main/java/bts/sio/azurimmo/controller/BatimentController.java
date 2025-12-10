@@ -17,8 +17,9 @@ public class BatimentController {
     private BatimentService batimentService;
 
     @PostMapping("/")
-    public Batiment createBatiment(@RequestBody Batiment batiment) {
-        return batimentService.saveBatiment(batiment);
+    public ResponseEntity<BatimentDTO> createBatiment(@RequestBody BatimentDTO dto) {
+        BatimentDTO savedDTO = batimentService.saveBatimentDTO(dto);
+        return ResponseEntity.status(201).body(savedDTO); // 201 Created
     }
 
     @GetMapping("/{id}")
