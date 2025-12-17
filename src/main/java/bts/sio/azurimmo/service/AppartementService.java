@@ -65,10 +65,10 @@ public class AppartementService {
 	 }
 	 
 	 public List<AppartementDTO> getAppartementsDTO() {
-	        return appartementRepository.findAll() // 1. On récupère tout de la base (List<Appartement>)
-	                .stream()                      // 2. On ouvre le flux pour traiter
-	                .map(AppartementMapper::toDTO) // 3. On transforme chaque Appartement en AppartementDTO
-	                .collect(java.util.stream.Collectors.toList()); // 4. On refait une Liste
-	    }
+	        return appartementRepository.findAll() 
+	                .stream()                     
+	                .map(AppartementMapper::toDTO) 
+	                .collect(java.util.stream.Collectors.toList()); 
+	 }
 
 }
