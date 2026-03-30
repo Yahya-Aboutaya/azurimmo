@@ -1,7 +1,7 @@
 package bts.sio.azurimmo.service;
 
 import java.util.List;
-import java.util.stream.Collectors; 
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -23,6 +23,13 @@ public class ContratService {
     public ContratService(ContratRepository repository, AppartementRepository appartementRepository) {
         this.repository = repository;
         this.appartementRepository = appartementRepository; 
+    }
+    
+
+    public List<ContratDTO> getContratsByAppartementId(Long appartementId) {
+        return repository.findByAppartement_Id(appartementId).stream()
+                .map(ContratMapper::toDTO)
+                .collect(Collectors.toList());
     }
     
     public ContratDTO createContrat(ContratDTO dto) {

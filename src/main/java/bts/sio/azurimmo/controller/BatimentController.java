@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin("http://localhost:5173")
 @RequestMapping("/batiments")
 @Tag(name = "Batiments", description = "Gestion des batiments")
 public class BatimentController {

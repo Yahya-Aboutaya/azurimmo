@@ -38,6 +38,14 @@ public class AppartementService {
 	     return savedAppartement;
 	 }
 	 
+	// récupérer UN seul appartement par son ID
+	 public AppartementDTO getAppartementById(Long id) {
+	        Appartement appartement = appartementRepository.findById(id)
+	            .orElseThrow(() -> new RuntimeException("Appartement non trouvé !"));
+	        
+	        return AppartementMapper.toDTO(appartement);
+	 }
+	 
 	 public List<Appartement> findByVille(String ville) {
 		 return appartementRepository.findByBatiment_Ville(ville);
 	}
